@@ -162,19 +162,28 @@ Permite manipulação indevida de saldo e compromete a integridade financeira do
 **Ambiente:** Google Colab / Python 3.x / Banco do Stark  
 
 **Descrição:**  
-O método de depósito não valida se o valor informado é maior que zero antes de realizar a operação.
+O método de depósito não valida se o valor informado é maior que zero antes de realizar a operação, permitindo valores inválidos.
 
 **Passos para Reproduzir:**
 1. Executar: `banco.depositar('tony', 0)`
 2. Executar: `banco.depositar('tony', -100)`
 
 **Resultado Esperado:**  
-O sistema deve validar o valor antes de alterar o saldo.
+O sistema deve validar o valor antes de alterar o saldo e exibir mensagem de erro quando o valor for menor ou igual a zero.
 
 **Resultado Obtido:**  
-O sistema executa a operação sem qualquer validação.
+O sistema executa a operação normalmente, exibindo mensagem de sucesso mesmo com valores inválidos.
+
+**Evidência:**
+```
+Teste N1 - Depósito com valor zero
+OK - Depósito realizado: 0
+
+Teste N2 - Depósito negativo
+OK - Depósito realizado: -100
+```
 
 **Impacto/Risco:**  
-Descumprimento de regra de negócio e risco de inconsistência nos registros financeiros.
+Descumprimento da regra de negócio e risco de inconsistência financeira no sistema.
 
 ---
